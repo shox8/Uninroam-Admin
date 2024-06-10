@@ -1,6 +1,9 @@
 import React from "react";
 import { Block } from "./style";
+import Navbar from "../../components/navbar";
 
 export default function Home() {
-  return <Block>Home</Block>;
+  return <Block>
+    <Navbar/>
+  </Block>;
 }
