@@ -13,3 +13,16 @@ body {
   background-size: cover;
   min-height: 100dvh;
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.flex-space {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}

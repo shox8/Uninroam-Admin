@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Forgot from "./pages/forgot";
 import Reset from "./pages/reset";
 import Home from "./pages/home";
+import Categories from "./pages/categories";
 
 export default function Router() {
   return (
@@ -12,6 +13,7 @@ export default function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/forgot" element={<Forgot />} />
       <Route path="/reset" element={<Reset />} />
+      <Route path="/categories" element={<Categories />} />
     </Routes>
   );
 }
