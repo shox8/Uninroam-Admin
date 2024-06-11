@@ -14,6 +14,10 @@ export const Block = styled.div`
     border: 1px solid #fff;
     background-color: #ffffffae;
     backdrop-filter: blur(30px);
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
     .input {
       height: 40px;
       display: flex;
@@ -24,7 +28,7 @@ export const Block = styled.div`
       width: 100%;
       height: 45px;
       font-size: 20px;
-      margin-top: 10px;
+      margin-top: 20px;
       background-color: #000000;
       &:hover {
         background-color: #303030 !important;

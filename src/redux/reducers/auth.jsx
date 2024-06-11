@@ -6,22 +6,16 @@ import axios from "axios";
 const auth = createSlice({
   name: "auth",
   initialState: {
-    registerLoader: false,
+    admin: {},
     loginLoader: false,
     forgotLoader: false,
     resetLoader: false,
   },
   reducers: {
-    register: (state, { payload }) => {
-      localStorage.setItem("userId", payload.id);
-      localStorage.setItem("token", payload.token);
-      state.registerLoader = false;
-      message.success("Вы авторизованы").then(() => {
-        window.location.pathname = "/";
-      });
+    getAdmin: (state, { payload }) => {
+      state.admin = payload;
     },
     login: (state, { payload }) => {
-      localStorage.setItem("userId", payload.id);
       localStorage.setItem("token", payload.token);
       state.loginLoader = false;
       message.success("С возврашением").then(() => {
@@ -45,7 +39,6 @@ const auth = createSlice({
     },
     error: (state, { payload }) => {
       message.error(payload);
-      state.registerLoader = false;
       state.loginLoader = false;
       state.forgotLoader = false;
       state.resetLoader = false;
@@ -53,12 +46,12 @@ const auth = createSlice({
   },
 });
 
-export const register = (data) => {
+export const getAdmin = () => {
   return (dispatch) => {
     axios
-      .post(baseUrl("/auth/register"), data)
+      .get(baseUrl("/admin"), headers)
       .then(({ data }) => {
-        dispatch({ type: "auth/register", payload: data });
+        dispatch({ type: "auth/getAdmin", payload: data });
       })
       .catch(({ response }) => {
         dispatch({ type: "auth/error", payload: response.data });
@@ -69,7 +62,7 @@ export const register = (data) => {
 export const login = (data) => {
   return (dispatch) => {
     axios
-      .post(baseUrl("/auth/login"), data)
+      .post(baseUrl("/admin/login"), data)
       .then(({ data }) => {
         dispatch({ type: "auth/login", payload: data });
       })
@@ -82,7 +75,7 @@ export const login = (data) => {
 export const forgot = (data) => {
   return (dispatch) => {
     axios
-      .post(baseUrl("/auth/forgot"), data, headers)
+      .post(baseUrl("/admin/forgot"), data, headers)
       .then(({ data }) => {
         dispatch({ type: "auth/forgot", payload: data });
       })
@@ -95,7 +88,7 @@ export const forgot = (data) => {
 export const reset = (data) => {
   return (dispatch) => {
     axios
-      .post(baseUrl("/auth/reset"), data, headers)
+      .post(baseUrl("/admin/reset"), data, headers)
       .then(({ data }) => {
         dispatch({ type: "auth/reset", payload: data });
       })

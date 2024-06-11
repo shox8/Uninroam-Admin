@@ -68,11 +68,6 @@ export default function Login() {
             Вход
           </Button>
         </Form.Item>
-        <Anchor
-          text="Создать аккаунт"
-          route="/register"
-          routeName="Регистрация"
-        />
       </Form>
     </Block>
   );
