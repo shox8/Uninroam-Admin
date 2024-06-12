@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { baseUrl, headers } from "../../utils";
 import { message } from "antd";
-import axios from "axios";
+import { apiCall } from "../api-call";
 
 const data = createSlice({
   name: "data",
@@ -24,17 +23,15 @@ const data = createSlice({
   },
 });
 
+const keys = { onFail: "data/error" };
+
 export const getCategories = () => {
-  return (dispatch) => {
-    axios
-      .get(baseUrl("/data/categories"), headers)
-      .then(({ data }) => {
-        dispatch({ type: "data/getCategories", payload: data });
-      })
-      .catch(({ response }) => {
-        dispatch({ type: "data/error", payload: response.data });
-      });
-  };
+  return apiCall({
+    ...keys,
+    url: "data/categories",
+    method: "get",
+    onSuccess: "data/getCategories",
+  });
 };
 
 export const { toggleLoader } = data.actions;

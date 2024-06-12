@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { baseUrl, headers } from "../../utils";
 import { message } from "antd";
-import axios from "axios";
+import { apiCall } from "../api-call";
 
 const auth = createSlice({
   name: "auth",
@@ -46,56 +45,46 @@ const auth = createSlice({
   },
 });
 
-export const getAdmin = () => {
-  return (dispatch) => {
-    axios
-      .get(baseUrl("/admin"), headers)
-      .then(({ data }) => {
-        dispatch({ type: "auth/getAdmin", payload: data });
-      })
-      .catch(({ response }) => {
-        dispatch({ type: "auth/error", payload: response.data });
-      });
-  };
+const keys = { onFail: "auth/error" };
+
+export const getAdmin = (data) => {
+  return apiCall({
+    ...keys,
+    url: "/admin",
+    method: "get",
+    onSuccess: "auth/getAdmin",
+    data,
+  });
 };
 
 export const login = (data) => {
-  return (dispatch) => {
-    axios
-      .post(baseUrl("/admin/login"), data)
-      .then(({ data }) => {
-        dispatch({ type: "auth/login", payload: data });
-      })
-      .catch(({ response }) => {
-        dispatch({ type: "auth/error", payload: response.data });
-      });
-  };
+  return apiCall({
+    ...keys,
+    url: "/admin/login",
+    onSuccess: "auth/login",
+    method: "post",
+    data,
+  });
 };
 
 export const forgot = (data) => {
-  return (dispatch) => {
-    axios
-      .post(baseUrl("/admin/forgot"), data, headers)
-      .then(({ data }) => {
-        dispatch({ type: "auth/forgot", payload: data });
-      })
-      .catch(({ response }) => {
-        dispatch({ type: "auth/error", payload: response.data });
-      });
-  };
+  return apiCall({
+    ...keys,
+    url: "/admin/forgot",
+    onSuccess: "auth/forgot",
+    method: "post",
+    data,
+  });
 };
 
 export const reset = (data) => {
-  return (dispatch) => {
-    axios
-      .post(baseUrl("/admin/reset"), data, headers)
-      .then(({ data }) => {
-        dispatch({ type: "auth/reset", payload: data });
-      })
-      .catch(({ response }) => {
-        dispatch({ type: "auth/error", payload: response.data });
-      });
-  };
+  return apiCall({
+    ...keys,
+    url: "/admin/reset",
+    onSuccess: "auth/reset",
+    method: "post",
+    data,
+  });
 };
 
 export const { toggleLoader } = auth.actions;
