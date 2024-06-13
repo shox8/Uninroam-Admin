@@ -37,7 +37,7 @@ export const Card = styled.div`
   padding: 20px;
   border: 1px solid #fff;
   background-color: #eee5dc;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
   margin-bottom: 20px;
   .image {
     border-radius: 10px;

@@ -6,14 +6,14 @@ export const Block = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
   .form {
     width: 380px;
     border-radius: 20px;
     padding: 20px;
     border: 1px solid #fff;
     background-color: #ffffffae;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(20px);
     .title {
       font-size: 20px;
       margin-bottom: 10px;

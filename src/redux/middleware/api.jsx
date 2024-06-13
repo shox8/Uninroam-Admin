@@ -25,7 +25,7 @@ const api =
       .catch((error) => {
         dispatch({
           type: onFail,
-          payload: error.response.data ? error.response.data : "Ошибка",
+          payload: error.response?.data ? error.response.data : "Ошибка",
         });
       });
   };

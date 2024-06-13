@@ -4,7 +4,7 @@ export const Style = styled.div`
   height: 80px;
   padding: 15px;
   background-color: #ffffffae;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
   width: 100%;
   display: flex;
   justify-content: space-between;

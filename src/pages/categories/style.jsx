@@ -3,8 +3,18 @@ import styled from "styled-components";
 export const Block = styled.div`
   width: 100%;
   min-height: 100dvh;
+  .creator {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    gap: 20px;
+    input,
+    button {
+      height: 40px;
+    }
+  }
   .table {
-    margin: 30px;
+    margin: 20px;
     .dots {
       height: 40px;
       width: 40px;
