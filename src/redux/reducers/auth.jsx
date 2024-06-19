@@ -6,6 +6,7 @@ const auth = createSlice({
   name: "auth",
   initialState: {
     admin: {},
+    editLoader: false,
     loginLoader: false,
     forgotLoader: false,
     resetLoader: false,
@@ -13,6 +14,11 @@ const auth = createSlice({
   reducers: {
     getAdmin: (state, { payload }) => {
       state.admin = payload;
+    },
+    editAdmin: (state, { payload }) => {
+      state.admin = payload;
+      state.editLoader = false;
+      message.success("Данные изменены");
     },
     login: (state, { payload }) => {
       localStorage.setItem("token", payload.token);
@@ -38,6 +44,7 @@ const auth = createSlice({
     },
     error: (state, { payload }) => {
       message.error(payload);
+      state.editLoader = false;
       state.loginLoader = false;
       state.forgotLoader = false;
       state.resetLoader = false;
@@ -53,6 +60,16 @@ export const getAdmin = (data) => {
     url: "/admin",
     method: "get",
     onSuccess: "auth/getAdmin",
+    data,
+  });
+};
+
+export const editAdmin = (data) => {
+  return apiCall({
+    ...keys,
+    url: "/admin",
+    method: "put",
+    onSuccess: "auth/editAdmin",
     data,
   });
 };

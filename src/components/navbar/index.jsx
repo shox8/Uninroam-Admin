@@ -4,10 +4,12 @@ import { Button, Popconfirm } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { GoX } from "react-icons/go";
 import { CgMenuRight } from "react-icons/cg";
+import AdminEditor from "../adminEditor";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   function logout() {
     localStorage.clear();
@@ -29,6 +31,7 @@ export default function Navbar() {
         <Link to={"/categories"} title="">
           Категории
         </Link>
+        <Button onClick={() => setAdmin(true)}>Админ</Button>
         <Popconfirm
           onConfirm={logout}
           title="Вы хотите выйти?"
@@ -38,6 +41,7 @@ export default function Navbar() {
           <Button>Выйти</Button>
         </Popconfirm>
       </div>
+      <AdminEditor open={admin} setOpen={setAdmin} />
     </Style>
   );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { Block } from "../styles/auth";
 import { Button, Form, Input } from "antd";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { IoMdLock } from "react-icons/io";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { login, toggleLoader } from "../redux/reducers/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,15 +24,10 @@ export default function Login() {
         <Form.Item
           name="email"
           label="Электронный адрес"
-          rules={[
-            {
-              required: true,
-              message: "Введите ваш Email!",
-            },
-          ]}
+          rules={[{ required: true, message: "Введите ваш Email!" }]}
         >
           <Input
-            prefix={<MailOutlined />}
+            prefix={<IoMailOpenOutline />}
             type="email"
             placeholder="Электронный адрес"
             className="input"
@@ -39,25 +36,16 @@ export default function Login() {
         <Form.Item
           name="password"
           label="Пароль"
-          rules={[
-            {
-              required: true,
-              message: "Введите пароль!",
-            },
-          ]}
+          rules={[{ required: true, message: "Введите пароль!" }]}
         >
           <Input.Password
-            prefix={<LockOutlined />}
+            prefix={<IoMdLock />}
             type="password"
             placeholder="Пароль"
             className="input"
           />
         </Form.Item>
-        <Anchor
-          text="Забыли пароль?"
-          route="/forgot"
-          routeName="Сменить"
-        />
+        <Anchor text="Забыли пароль?" route="/forgot" routeName="Сменить" />
         <Form.Item>
           <Button
             type="primary"

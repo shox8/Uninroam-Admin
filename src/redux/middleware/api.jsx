@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "../../utils";
+import { baseUrl, headers } from "../../utils";
 
 const api =
   ({ dispatch }) =>
@@ -14,7 +14,7 @@ const api =
 
     axios({
       baseURL: baseUrl(""),
-      headers: { token: localStorage.getItem("token") },
+      headers: headers,
       url,
       method,
       data,
