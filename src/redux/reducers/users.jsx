@@ -12,6 +12,14 @@ const users = createSlice({
     getUsers: (state, { payload }) => {
       state.users = payload;
     },
+    editUser: (state, { payload }) => {
+      state.users.map((item, index) => {
+        if (item.id === payload.id) {
+          state.users.splice(index, 1, payload);
+          state.banLoader = false;
+        }
+      });
+    },
     toggleLoader: (state, { payload }) => {
       state[payload] = !state[payload];
     },

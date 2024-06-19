@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Block } from "./style";
-import Navbar from "../../components/navbar";
 import { Button, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../redux/reducers/users";
+import { editUser, getUsers, toggleLoader } from "../../redux/reducers/users";
+import Navbar from "../../components/navbar";
 
 export default function Users() {
   const dispatch = useDispatch();
@@ -18,7 +18,26 @@ export default function Users() {
       title: "Имя",
       dataIndex: "username",
     },
+    {
+      title: "Роль",
+      render: (e) => (e.type === "buyer" ? "Покупатель" : "Продавец"),
+    },
+    {
+      title: "Бан",
+      render: (e) => (
+        <Button onClick={() => ban(e)}>
+          {e.ban ? "Отменить" : "Блокировать"}
+        </Button>
+      ),
+    },
   ];
+
+  // function openModal() {}
+
+  function ban(user) {
+    // dispatch(toggleLoader("banLoader"));
+    dispatch(editUser({ ...user, ban: !user.ban }));
+  }
 
   return (
     <Block>
