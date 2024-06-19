@@ -5,6 +5,7 @@ import Forgot from "./pages/forgot";
 import Reset from "./pages/reset";
 import Home from "./pages/home";
 import Categories from "./pages/categories";
+import Users from "./pages/users";
 
 export default function Router() {
   return (
@@ -14,6 +15,7 @@ export default function Router() {
       <Route path="/forgot" element={<Forgot />} />
       <Route path="/reset" element={<Reset />} />
       <Route path="/categories" element={<Categories />} />
+      <Route path="/users" element={<Users />} />
     </Routes>
   );
 }

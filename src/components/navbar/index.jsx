@@ -28,9 +28,8 @@ export default function Navbar() {
         </Button>
       </div>
       <div className="line">
-        <Link to={"/categories"} title="">
-          Категории
-        </Link>
+        <Link to={"/categories"}>Категории</Link>
+        <Link to={"/users"}>Пользователи</Link>
         <Button onClick={() => setAdmin(true)}>Админ</Button>
         <Popconfirm
           onConfirm={logout}
