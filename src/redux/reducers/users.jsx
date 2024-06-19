@@ -10,7 +10,7 @@ const users = createSlice({
   },
   reducers: {
     getUsers: (state, { payload }) => {
-      state.sellers = payload;
+      state.users = payload;
     },
     toggleLoader: (state, { payload }) => {
       state[payload] = !state[payload];
