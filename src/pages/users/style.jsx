@@ -24,6 +24,26 @@ export const Block = styled.div`
       }
     }
   }
+  .title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .avatar {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid #d3d3d3;
+      img {
+        min-width: 45px;
+        min-height: 45px;
+        object-fit: cover;
+      }
+    }
+  }
   @media screen and (max-width: 600px) {
   }
 `;
